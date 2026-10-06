@@ -1,0 +1,185 @@
+{
+  "release_version": "qwen-rollouts-v1",
+  "schema_version": "1.0",
+  "model": "Qwen/Qwen3-4B",
+  "records_filtered": 0,
+  "mmlu_options_revision": "54611cde22c74cca43dd78732198de6abe971398",
+  "legacy_visible_text_tokenizer_sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+  "source_transformations": [
+    "Remove metadata outside the documented generation-metadata allowlist.",
+    "Omit the collector's legacy uncertainty snapshot; preserve observation_noise.",
+    "Restore MMLU-Pro options from the verified source revision.",
+    "Add unique identifiers, scoring signals, and non-destructive quality annotations."
+  ],
+  "files": [
+    {
+      "path": "debate_math_500.jsonl.gz",
+      "protocol": "debate",
+      "dataset": "math_500",
+      "sha256": "80e54ee6ab984e8f084f82cffb8bf0dc7d831c5c7ca09402ea98b9e6393fc0d6",
+      "source_sha256": "05ed1f411f7de617579d815dee46ae004fa5ca3e9dfc802b982d9e693f184f22",
+      "compressed_bytes": 1217114,
+      "counts": {
+        "agent_responses": 4500,
+        "records": 500,
+        "rounds": 1500
+      },
+      "agent_quality_counts": {
+        "parse_missing": 14,
+        "output_budget_candidate": 15,
+        "repetition_candidate": 7,
+        "unfinished_boxed_candidate": 1,
+        "dangling_tail_candidate": 5
+      },
+      "record_quality_counts": {
+        "output_budget_candidate": 12,
+        "repetition_candidate": 6,
+        "parse_missing": 12,
+        "dangling_tail_candidate": 5,
+        "unfinished_boxed_candidate": 1
+      }
+    },
+    {
+      "path": "debate_mmlu_pro.jsonl.gz",
+      "protocol": "debate",
+      "dataset": "mmlu_pro",
+      "sha256": "8e9f06aa729dc830983773e76f8a38260e9da474783878406b6b0f081e841093",
+      "source_sha256": "e5082b121c72d5c6499c5d7fab9f52dd89245f74c6081021fc84b3e9fff90dcb",
+      "compressed_bytes": 31386047,
+      "counts": {
+        "agent_responses": 108288,
+        "records": 12032,
+        "rounds": 36096
+      },
+      "agent_quality_counts": {
+        "dangling_tail_candidate": 254,
+        "parse_missing": 468,
+        "output_budget_candidate": 181,
+        "repetition_candidate": 73
+      },
+      "record_quality_counts": {
+        "dangling_tail_candidate": 196,
+        "output_budget_candidate": 134,
+        "parse_missing": 303,
+        "repetition_candidate": 62,
+        "empty_consensus": 11
+      }
+    },
+    {
+      "path": "debate_bbh.jsonl.gz",
+      "protocol": "debate",
+      "dataset": "bbh",
+      "sha256": "f4447fafc97473bc5a371c6dc2333809ad3fbdb19e3943d0e01eab23c8a4f2dd",
+      "source_sha256": "f0b15d67bc1b7a59e18bf81be2f4b30abe7b47c307d96371e5804a3da511b866",
+      "compressed_bytes": 3233209,
+      "counts": {
+        "agent_responses": 11250,
+        "records": 1250,
+        "rounds": 3750
+      },
+      "agent_quality_counts": {
+        "dangling_tail_candidate": 16,
+        "parse_missing": 31,
+        "unfinished_boxed_candidate": 1,
+        "output_budget_candidate": 42,
+        "repetition_candidate": 13
+      },
+      "record_quality_counts": {
+        "dangling_tail_candidate": 16,
+        "unfinished_boxed_candidate": 1,
+        "parse_missing": 27,
+        "output_budget_candidate": 35,
+        "repetition_candidate": 12
+      }
+    },
+    {
+      "path": "dylan_math_500.jsonl.gz",
+      "protocol": "dylan",
+      "dataset": "math_500",
+      "sha256": "b9d8f224c887fd6e1b6d3cb9af79355c6a70b839bbc3c17b0aa7f155e4c30aff",
+      "source_sha256": "d1c47a1a8ce938c13ef7271eba88c0177cc1eac5d475d2dddabb43f77f95a180",
+      "compressed_bytes": 1255192,
+      "counts": {
+        "agent_responses": 2208,
+        "records": 500,
+        "rounds": 606,
+        "early_stopped_records": 478,
+        "early_stop_flag_records": 490
+      },
+      "agent_quality_counts": {
+        "parse_missing": 11,
+        "output_budget_candidate": 15,
+        "dangling_tail_candidate": 4,
+        "unfinished_boxed_candidate": 1,
+        "repetition_candidate": 6
+      },
+      "record_quality_counts": {
+        "output_budget_candidate": 9,
+        "parse_missing": 7,
+        "dangling_tail_candidate": 4,
+        "unfinished_boxed_candidate": 1,
+        "repetition_candidate": 2
+      }
+    },
+    {
+      "path": "dylan_mmlu_pro.jsonl.gz",
+      "protocol": "dylan",
+      "dataset": "mmlu_pro",
+      "sha256": "adb85965d15812d08cf401647baead4c22acedf3ae28ccf44e5df2b8f23a6565",
+      "source_sha256": "46db14b917ea060ac7ebc50171fb8828a1613d417a3628ab1d9fd81c0db8775b",
+      "compressed_bytes": 25710282,
+      "counts": {
+        "agent_responses": 45316,
+        "records": 12032,
+        "rounds": 16795,
+        "early_stopped_records": 11516,
+        "early_stop_flag_records": 11882
+      },
+      "agent_quality_counts": {
+        "dangling_tail_candidate": 372,
+        "parse_missing": 517,
+        "output_budget_candidate": 194,
+        "repetition_candidate": 87
+      },
+      "record_quality_counts": {
+        "dangling_tail_candidate": 347,
+        "output_budget_candidate": 174,
+        "repetition_candidate": 83,
+        "parse_missing": 425,
+        "empty_consensus": 9
+      }
+    },
+    {
+      "path": "dylan_bbh.jsonl.gz",
+      "protocol": "dylan",
+      "dataset": "bbh",
+      "sha256": "e40be3a3929a1684d0aaf9bba2294fa7e2f0a5edc01b9334c3f830cf64e13939",
+      "source_sha256": "1ba80f4ceb0f4f7a7308f4eb2e1e9fd80f78ef87eae001b707933842791f8eb2",
+      "compressed_bytes": 2785387,
+      "counts": {
+        "agent_responses": 5336,
+        "records": 1250,
+        "rounds": 2051,
+        "early_stopped_records": 1143,
+        "early_stop_flag_records": 1200
+      },
+      "agent_quality_counts": {
+        "dangling_tail_candidate": 32,
+        "output_budget_candidate": 48,
+        "repetition_candidate": 17,
+        "parse_missing": 34,
+        "unfinished_boxed_candidate": 3
+      },
+      "record_quality_counts": {
+        "dangling_tail_candidate": 30,
+        "output_budget_candidate": 38,
+        "repetition_candidate": 15,
+        "parse_missing": 29,
+        "unfinished_boxed_candidate": 3
+      }
+    }
+  ],
+  "total_records": 27564,
+  "total_agent_responses": 176898,
+  "total_compressed_bytes": 65587231
+}

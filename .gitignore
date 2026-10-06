@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+build/
+dist/
+.pytest_cache/
+.env
+*.env
+*.pem
+*.key
+/datasets/qwen3_4b/*.jsonl.gz
+/artifacts/

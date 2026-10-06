@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use SAUCE, please cite the accompanying paper."
+title: "SAUCE: Sequential Agent Uncertainty through Consensus Evolution"
+version: 0.1.0
+url: "https://github.com/Tyrion58/SAUCE"
+license: MIT
+type: software
+authors: &authors
+  - family-names: Zhang
+    given-names: Tunyu
+  - family-names: Zhao
+    given-names: Zihao
+  - family-names: Zhao
+    given-names: Yusong
+  - family-names: Shi
+    given-names: Haizhou
+  - family-names: Li
+    given-names: Zhuohang
+  - family-names: Chen
+    given-names: Haoxian
+  - family-names: Wang
+    given-names: Hao
+  - family-names: Metaxas
+    given-names: Dimitris N.
+preferred-citation:
+  type: conference-paper
+  title: "Sequential Probabilistic Uncertainty Estimation for Parallel Multi-Agent Reasoning Systems"
+  authors: *authors
+  collection-title: "Advances in Neural Information Processing Systems (NeurIPS)"
+  year: 2026

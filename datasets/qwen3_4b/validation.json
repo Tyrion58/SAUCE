@@ -1,0 +1,55 @@
+{
+  "validated_records": 27564,
+  "unique_questions": 13782,
+  "validated_agent_responses": 176898,
+  "files": [
+    {
+      "path": "debate_math_500.jsonl.gz",
+      "records": 500,
+      "agent_responses": 4500,
+      "max_score_delta": 2.220446049250313e-16,
+      "all_retained_original_fields_preserved": true,
+      "mmlu_options_verified": null
+    },
+    {
+      "path": "debate_mmlu_pro.jsonl.gz",
+      "records": 12032,
+      "agent_responses": 108288,
+      "max_score_delta": 2.220446049250313e-16,
+      "all_retained_original_fields_preserved": true,
+      "mmlu_options_verified": true
+    },
+    {
+      "path": "debate_bbh.jsonl.gz",
+      "records": 1250,
+      "agent_responses": 11250,
+      "max_score_delta": 2.220446049250313e-16,
+      "all_retained_original_fields_preserved": true,
+      "mmlu_options_verified": null
+    },
+    {
+      "path": "dylan_math_500.jsonl.gz",
+      "records": 500,
+      "agent_responses": 2208,
+      "max_score_delta": 0.0,
+      "all_retained_original_fields_preserved": true,
+      "mmlu_options_verified": null
+    },
+    {
+      "path": "dylan_mmlu_pro.jsonl.gz",
+      "records": 12032,
+      "agent_responses": 45316,
+      "max_score_delta": 2.220446049250313e-16,
+      "all_retained_original_fields_preserved": true,
+      "mmlu_options_verified": true
+    },
+    {
+      "path": "dylan_bbh.jsonl.gz",
+      "records": 1250,
+      "agent_responses": 5336,
+      "max_score_delta": 1.1102230246251565e-16,
+      "all_retained_original_fields_preserved": true,
+      "mmlu_options_verified": null
+    }
+  ]
+}

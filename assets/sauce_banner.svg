@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="240" viewBox="0 0 1000 240" role="img" aria-labelledby="title desc">
+  <title id="title">SAUCE</title>
+  <desc id="desc">SAUCE wordmark with a compass symbol and three interaction paths.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10223d"/>
+      <stop offset="1" stop-color="#183b52"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a5efe0"/>
+      <stop offset="1" stop-color="#83b9ed"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="240" rx="24" fill="url(#background)"/>
+  <g fill="none" stroke="#86b5d0" stroke-width="1" opacity="0.12">
+    <path d="M0 48H1000M0 96H1000M0 144H1000M0 192H1000"/>
+    <path d="M200 0V240M400 0V240M600 0V240M800 0V240"/>
+  </g>
+  <g transform="translate(130 120)">
+    <circle r="58" fill="#122a44" stroke="#6388a5" stroke-width="2"/>
+    <circle r="46" fill="none" stroke="#6388a5" stroke-width="1" opacity="0.55"/>
+    <path d="M0-53V-44M0 44V53M-53 0H-44M44 0H53" stroke="#9fc4d7" stroke-width="2"/>
+    <g transform="rotate(24)">
+      <path d="M0-42L16 16L0 7L-16 16Z" fill="url(#accent)"/>
+      <path d="M0 42L-16-16L0-7L16-16Z" fill="#eaf4fb" opacity="0.82"/>
+    </g>
+    <circle r="5" fill="#122a44" stroke="#eaf4fb" stroke-width="2"/>
+  </g>
+  <text x="234" y="153" fill="#f2f7fc" font-family="Inter, Avenir, DejaVu Sans, sans-serif" font-size="94" font-weight="800" letter-spacing="10">SAUCE</text>
+  <g fill="none" stroke-width="2.5" stroke-linecap="round" opacity="0.72">
+    <path d="M766 64C810 64 806 112 850 112S890 90 932 90" stroke="#a5efe0"/>
+    <path d="M766 120C810 120 808 138 850 138S890 90 932 90" stroke="#83b9ed"/>
+    <path d="M766 176C810 176 808 156 850 156S890 90 932 90" stroke="#cab5ee"/>
+  </g>
+  <g>
+    <circle cx="766" cy="64" r="6" fill="#a5efe0"/>
+    <circle cx="766" cy="120" r="6" fill="#83b9ed"/>
+    <circle cx="766" cy="176" r="6" fill="#cab5ee"/>
+    <circle cx="850" cy="112" r="4" fill="#a5efe0"/>
+    <circle cx="850" cy="138" r="4" fill="#83b9ed"/>
+    <circle cx="850" cy="156" r="4" fill="#cab5ee"/>
+    <circle cx="932" cy="90" r="8" fill="#eaf4fb"/>
+  </g>
+</svg>
