@@ -10,32 +10,11 @@ Each file contains one complete trajectory per JSONL line and is compressed
 with gzip. All source trajectories are retained, including generation and
 answer-format failures. No quality-based filtering has been applied.
 
-## Download
+## Access on Hugging Face
 
-The data is hosted on [Hugging Face](https://huggingface.co/datasets/Tyrion279/SAUCE-Qwen3-4B-Rollouts).
-Download an individual setting from the versioned `qwen-rollouts-v1` release:
-
-| Benchmark | Protocol | Trajectories | Agent responses | Download |
-|---|---|---:|---:|---|
-| MATH-500 | Debate | 500 | 4,500 | [JSONL.gz](https://huggingface.co/datasets/Tyrion279/SAUCE-Qwen3-4B-Rollouts/resolve/qwen-rollouts-v1/data/debate_math_500.jsonl.gz) |
-| MATH-500 | DyLAN | 500 | 2,208 | [JSONL.gz](https://huggingface.co/datasets/Tyrion279/SAUCE-Qwen3-4B-Rollouts/resolve/qwen-rollouts-v1/data/dylan_math_500.jsonl.gz) |
-| MMLU-Pro | Debate | 12,032 | 108,288 | [JSONL.gz](https://huggingface.co/datasets/Tyrion279/SAUCE-Qwen3-4B-Rollouts/resolve/qwen-rollouts-v1/data/debate_mmlu_pro.jsonl.gz) |
-| MMLU-Pro | DyLAN | 12,032 | 45,316 | [JSONL.gz](https://huggingface.co/datasets/Tyrion279/SAUCE-Qwen3-4B-Rollouts/resolve/qwen-rollouts-v1/data/dylan_mmlu_pro.jsonl.gz) |
-| BBH | Debate | 1,250 | 11,250 | [JSONL.gz](https://huggingface.co/datasets/Tyrion279/SAUCE-Qwen3-4B-Rollouts/resolve/qwen-rollouts-v1/data/debate_bbh.jsonl.gz) |
-| BBH | DyLAN | 1,250 | 5,336 | [JSONL.gz](https://huggingface.co/datasets/Tyrion279/SAUCE-Qwen3-4B-Rollouts/resolve/qwen-rollouts-v1/data/dylan_bbh.jsonl.gz) |
-
-Total compressed size is about **66 MB**. Exact byte counts, source hashes,
-and per-setting quality statistics are in [manifest.json](manifest.json).
-Every exported trajectory was checked against its source: original text,
-answers, and measurements were preserved, and restored choices were verified.
-The results are in [validation.json](validation.json).
-To verify the local files:
-
-```bash
-python examples/download_rollouts.py --all
-cd datasets/qwen3_4b
-sha256sum -c SHA256SUMS
-```
+The rollout files and dataset card are hosted on
+[Hugging Face](https://huggingface.co/datasets/Tyrion279/SAUCE-Qwen3-4B-Rollouts).
+See the main README for the [paper reproduction example](../../README.md#reproduce-paper-results).
 
 The two protocols use the same question set within each benchmark. BBH
 covers five tasks, with 250 questions each:
@@ -45,29 +24,18 @@ covers five tasks, with 250 questions each:
 
 ## Read and score
 
-After installing SAUCE, run from the repository root:
-
-```bash
-# Download one setting and preview five trajectories.
-python examples/download_rollouts.py
-python examples/score_rollouts.py
-
-# Download and score another setting.
-python examples/download_rollouts.py --protocol dylan --dataset mmlu_pro
-python examples/score_rollouts.py datasets/qwen3_4b/dylan_mmlu_pro.jsonl.gz \
-  --limit 0 > scores.csv
-```
-
-For direct access using Python's standard library:
+After installing SAUCE and `datasets`, load trajectories directly from
+Hugging Face:
 
 ```python
-import gzip
-import json
+from datasets import load_dataset
 from sauce import sauce_score
 
-with gzip.open("datasets/qwen3_4b/debate_math_500.jsonl.gz", "rt", encoding="utf-8") as f:
-    record = json.loads(next(f))
-
+trajectories = load_dataset(
+    "Tyrion279/SAUCE-Qwen3-4B-Rollouts", "debate_math_500",
+    split="test", revision="qwen-rollouts-v1",
+)
+record = trajectories[0]
 score = sauce_score(
     record["signals"]["agreement"],
     record["signals"]["token_entropy"],
@@ -79,17 +47,6 @@ print(record["round_outputs"][0]["agents"][0]["response"])
 
 Higher scores indicate greater uncertainty. These scores are ranking
 signals; converting them to error probabilities requires calibration.
-
-Load directly with Hugging Face Datasets (requires `pip install datasets`):
-
-```python
-from datasets import load_dataset
-
-trajectories = load_dataset(
-    "Tyrion279/SAUCE-Qwen3-4B-Rollouts", "debate_math_500",
-    split="test", revision="qwen-rollouts-v1",
-)
-```
 
 The other configuration names are `dylan_math_500`, `debate_mmlu_pro`,
 `dylan_mmlu_pro`, `debate_bbh`, and `dylan_bbh`.
@@ -195,10 +152,11 @@ original measured count. In total, there are **495 budget candidates**
 agent responses or missing entropy measurements; **20 trajectories have
 empty final consensus**, all in MMLU-Pro (11 Debate, 9 DyLAN).
 
-For an optional filtered view, explicitly choose flags to exclude:
+For an optional filtered view of files obtained through the reproduction
+example, explicitly choose flags to exclude:
 
 ```bash
-python examples/score_rollouts.py datasets/qwen3_4b/debate_mmlu_pro.jsonl.gz \
+python examples/score_rollouts.py artifacts/qwen3_4b/data/debate_mmlu_pro.jsonl.gz \
   --limit 0 --exclude-flag output_budget_candidate \
   --exclude-flag repetition_candidate > filtered_scores.csv
 ```

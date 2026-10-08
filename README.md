@@ -20,12 +20,14 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/NeurIPS-2026-6849b8?style=flat-square" alt="NeurIPS 2026">
+  <a href="https://arxiv.org/abs/2610.08901"><img src="https://img.shields.io/badge/arXiv-2610.08901-b31b1b?style=flat-square" alt="arXiv:2610.08901"></a>
   <a href="https://huggingface.co/datasets/Tyrion279/SAUCE-Qwen3-4B-Rollouts"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Rollouts-ffd21e?style=flat-square" alt="Hugging Face rollout dataset"></a>
   <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&amp;logo=python&amp;logoColor=white" alt="Python 3.10 or newer">
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-3f8e5c?style=flat-square" alt="MIT license"></a>
 </p>
 
 <p align="center">
+  <a href="https://arxiv.org/abs/2610.08901">Paper</a> ·
   <a href="#quick-start">Quick start</a> ·
   <a href="#method">Method</a> ·
   <a href="#experimental-highlights">Results</a> ·
@@ -190,30 +192,9 @@ response and parsed answer. Debate records contain three rounds; DyLAN records
 contain one to three rounds, depending on early stopping.
 `agent_final_answers` is a separate view of the last round.
 
-### Download and score
-
-From the repository root:
-
-```bash
-# Download MATH-500 / Debate and score five trajectories.
-python examples/download_rollouts.py
-python examples/score_rollouts.py
-
-# Download all six settings.
-python examples/download_rollouts.py --all
-```
-
-The downloader pins `qwen-rollouts-v1` and checks file hashes. To score an
-entire setting and save a CSV:
-
-```bash
-python examples/score_rollouts.py datasets/qwen3_4b/dylan_mmlu_pro.jsonl.gz \
-  --limit 0 > scores.csv
-```
-
 ### Load with Hugging Face Datasets
 
-Alternatively, install `datasets` and access records directly:
+Install `datasets` and access records directly from Hugging Face:
 
 ```bash
 python -m pip install datasets
@@ -250,21 +231,25 @@ released settings. It scores saved trajectories with the protocol presets
 and checks the stored consensus against the reference answer.
 
 ```bash
-# Install the answer-checking dependency used by this example.
-python -m pip install ".[reproduce]"
+# Install the evaluation extra and Hugging Face client.
+python -m pip install ".[reproduce]" huggingface_hub
 
-# Download the versioned data.
-python examples/download_rollouts.py --all
+# Get the versioned rollout files directly from Hugging Face.
+hf download Tyrion279/SAUCE-Qwen3-4B-Rollouts \
+  --repo-type dataset --revision qwen-rollouts-v1 \
+  --include "data/*.jsonl.gz" --local-dir artifacts/qwen3_4b
 
 # Evaluate all six settings and save the results.
 python examples/reproduce_paper.py --dataset all --protocol all \
+  --data-dir artifacts/qwen3_4b/data \
   --output artifacts/qwen_results.json
 ```
 
 To evaluate one setting:
 
 ```bash
-python examples/reproduce_paper.py --dataset mmlu_pro --protocol debate
+python examples/reproduce_paper.py --dataset mmlu_pro --protocol debate \
+  --data-dir artifacts/qwen3_4b/data
 ```
 
 Expected results, in **percentage units**:
@@ -363,7 +348,8 @@ and floors posterior variance at `1e-15`. The trace includes per-round `mu`,
   author    = {Zhang, Tunyu and Zhao, Zihao and Zhao, Yusong and Shi, Haizhou and
                Li, Zhuohang and Chen, Haoxian and Wang, Hao and Metaxas, Dimitris N.},
   booktitle = {Advances in Neural Information Processing Systems},
-  year      = {2026}
+  year      = {2026},
+  url       = {https://arxiv.org/abs/2610.08901}
 }
 ```
 
